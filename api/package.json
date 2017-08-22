@@ -1,0 +1,25 @@
+{
+    "name": "waukesha-county-custard-api",
+    "version": "1.0.0",
+    "description": "The API backing for the Waukesha County Custard skill",
+    "main": "server.js",
+    "private": true,
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "custard",
+        "culvers",
+        "kopps",
+        "oscars"
+    ],
+    "author": "Michael Fazio <mfazio23@gmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "express": "^4.15.4",
+        "lokijs": "^1.5.0",
+        "moment": "^2.18.1",
+        "request": "^2.81.0"
+    }
+}
