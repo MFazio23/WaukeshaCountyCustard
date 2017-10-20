@@ -1,17 +1,14 @@
 const express = require("express"),
-    app = express(),
-    KoppsScraper = require('./scrapers/kopps-scraper');
+      LocalDBService = require('./db/local-db-service'),
+      scraperService = require('./services/scraper-service'),
+      apiService = require('./services/api-service'),
+      app = express();
 
-const koppsScraper = new KoppsScraper();
+const port = process.env.PORT || 2323,
+      db = new LocalDBService();
 
-const port = process.env.PORT || 2323;
-
-app.get('/scrape', (req, res) => {
-    koppsScraper.scrape().then((flavors) => {
-        res.json(flavors);
-    });
-
-});
+app.use('/scrape', scraperService(db));
+app.use('/api', apiService(db));
 
 app.listen(port);
 console.log(`API started on port ${port}`);
