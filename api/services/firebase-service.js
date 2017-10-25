@@ -4,7 +4,7 @@ const
     moment = require('moment'),
     request = require('request'),
     fbAdmin = require('firebase-admin'),
-    serviceAccount = require('./service-account-key.json');
+    serviceAccount = require('../db/service-account-key.json');
 
 class LocalDBService {
     constructor() {
