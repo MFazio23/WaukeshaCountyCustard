@@ -5,6 +5,7 @@ class KoppsScraper extends BaseScraper {
     constructor() {
         super();
         this.url = "https://www.kopps.com/flavor-forecast";
+        this.storeName = "kopps";
     }
 
     parseContent($) {
