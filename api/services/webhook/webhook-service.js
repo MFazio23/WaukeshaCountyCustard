@@ -1,11 +1,17 @@
 const flavorUtils = require('../../utils/flavor-utils');
 const responseUtils = require('../../utils/response-utils');
+const storeUtils = require('../../utils/store-utils');
 const moment = require('moment');
 const DialogflowApp = require('actions-on-google').DialogflowApp;
 
 let db, app;
 
 respond = (app, response, end) => {
+    if(!response) {
+        response = `I'm sorry, I'm having trouble processing your request.`;
+        if(end) app.tell(response);
+        else app.ask(`${response}  Please try again.`);
+    }
     if(end) {
         app.tell(response);
     } else {
@@ -23,17 +29,35 @@ flavors = (app) => {
     });
 };
 
-locations = (app) => {
+stores = (app) => {
     const store = app.getArgument("store");
     const city = app.getArgument("city");
-    respond(app, `The store was ${store} and the city was ${city}`)
-   /* db.getLocationsByStoreAndCity(store, city).then((locations) => {
-        /!*const flavorStatement = flavorUtils.convertFlavorsToDialogflowResponse(flavors, date);
-        respond(app, flavorStatement);*!/
-    });*/
+
+    db.getStores(store, city).then((stores) => {
+        if(!stores || stores.locationCount === 0){
+            respond(app, `I'm sorry, I couldn't find any ${store ? storeUtils.getProperStoreName(store) : 'stores'}${city ? ` in ${city}` : ''}.`);
+        }
+        const storeStatement = storeUtils.convertStoresToDialogflowResponse(stores, store, city);
+        respond(app, storeStatement);
+    }).catch((err) => respond(app, `I'm sorry, I couldn't find any ${store ? storeUtils.getProperStoreName(store) : 'stores'}${city ? ` in ${city}` : ''}.`));
 };
 
+hours = (app) => {
+    const store = app.getArgument("store");
+    const city = app.getArgument("city");
 
+    if(!store) app.ask("Please try again with a store name.");
+
+    db.getStores(store, city).then((stores) => {
+        if(!stores || stores.locationCount === 0){
+            respond(app, `I'm sorry, I couldn't find any ${store ? storeUtils.getProperStoreName(store) : 'stores'}${city ? ` in ${city}` : ''}.`);
+        }
+        const storeStatement = storeUtils.convertStoreHoursToDialogflowResponse(stores, store, city);
+        respond(app, storeStatement);
+    }).catch((err) => respond(app, `I'm sorry, I couldn't find any ${store ? storeUtils.getProperStoreName(store) : 'stores'}${city ? ` in ${city}` : ''}.`));
+
+    //respond(app, "This is not yet implemented.");
+};
 
 module.exports = (database) => {
     db = database;
@@ -43,7 +67,8 @@ module.exports = (database) => {
 
         let actionMap = new Map();
         actionMap.set('flavors', flavors);
-        actionMap.set('locations', locations);
+        actionMap.set('stores', stores);
+        actionMap.set('hours', hours);
 
         app.handleRequest(actionMap);
     }

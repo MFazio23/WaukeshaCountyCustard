@@ -10,9 +10,9 @@ class OscarsScraper extends BaseScraper {
     }
 
     parseContent($) {
-        const todayNameBlock = $("span.style31").first();
+        const todayNameBlock = $("p span.style3").first();
         const todaysName = todayNameBlock.text().trim();
-        const today = todayNameBlock.parent('p').text().trim();
+        const today = todayNameBlock.parent('p').text().trim().replace(/\n[ ]+/gi, ' ');
         const todaysDescription = today.replace(todaysName, '').trim();
 
         const month = $(".style11").text();

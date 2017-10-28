@@ -6,7 +6,7 @@ const
     fbAdmin = require('firebase-admin'),
     serviceAccount = require('../db/service-account-key.json');
 
-class LocalDBService {
+class FirebaseService {
     constructor() {
         this.dbUrl = "https://waukeshacountycustard.firebaseio.com";
         this.dateFormat = "YYYYMMDD";
@@ -59,6 +59,43 @@ class LocalDBService {
     getTodaysFlavors() {
         return this.getFlavorsForDate(moment());
     }
+
+    getStores(store, city) {
+        return new Promise((res, rej) => {
+            let locationCount = 0;
+            let url = `${this.dbUrl}/stores`;
+            if (store) url += `/${store}`;
+            url += '.json';
+            request(url, (err, resp, storesJson) => {
+                if (!err && storesJson && storesJson !== 'null') {
+                    const stores = store ? {[store]: JSON.parse(storesJson)} : JSON.parse(storesJson);
+                    let newStores = {};
+
+                    if (!city) {
+                        newStores = stores;
+                    }
+                    Object.keys(stores).forEach((key) => {
+                        const store = stores[key];
+                        if (city) {
+                            const location = store.locations[city.toLowerCase()];
+                            if (location) {
+                                store.locations = {};
+                                store.locations[city.toLowerCase()] = location;
+                                newStores[key] = store;
+                                locationCount++;
+                            }
+                        } else {
+                            locationCount += Object.keys(store.locations).length;
+                        }
+                    });
+                    newStores.locationCount = locationCount;
+                    res(newStores);
+                } else {
+                    rej();
+                }
+            });
+        });
+    }
 }
 
-module.exports = LocalDBService;
+module.exports = FirebaseService;

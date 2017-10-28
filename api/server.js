@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use('/scrape', scraperService(db));
 app.use('/api', apiService(db));
 
-app.post('/webhook', webhookService(db));
+app.post('/dialogflow/webhook', webhookService(db));
 
 app.listen(port);
 console.log(`API started on port ${port}`);

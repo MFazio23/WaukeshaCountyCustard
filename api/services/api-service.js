@@ -11,6 +11,9 @@ router.get('/flavors/today', (req, res, next) => {
 router.get('/flavors/:date', (req, res, next) => {
     db.getFlavorsForDate(req.params.date).then((flavors) => res.json(flavors));
 });
+router.get('/stores', (req, res, next) => {
+    db.getStores(req.query.store, req.query.city).then((stores) => res.json(stores));
+});
 
 module.exports = (database) => {
     db = database;
