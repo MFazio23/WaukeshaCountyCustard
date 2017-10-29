@@ -125,5 +125,4 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/node,webstorm
-api/db/service-account-key.json
-db/service-account-key.json
+service-account-key.json
