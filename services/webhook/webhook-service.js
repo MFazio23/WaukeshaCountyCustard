@@ -20,7 +20,7 @@ respond = (app, response, end) => {
 };
 
 flavors = (app) => {
-    const date = moment(app.getArgument("date"));
+    const date = app.getArgument("date") ? moment(app.getArgument("date")) : moment();
     const store = app.getArgument("store");
     db.getFlavorsForDate(date, store).then((flavors) => {
         if(!flavors) respond(app, "We are having trouble finding the flavors.  Please try again later!", true);
