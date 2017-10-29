@@ -16,5 +16,7 @@ app.use('/api', apiService(db));
 
 app.post('/dialogflow/webhook', webhookService(db));
 
+app.get('/', (req, res) => res.send("Welcome to the Waukesha County Custard API!  Don't use it!"));
+
 app.listen(port);
 console.log(`API started on port ${port}`);
