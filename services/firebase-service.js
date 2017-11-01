@@ -48,7 +48,7 @@ class FirebaseService {
             request(url, (err, resp, flavors) => {
                 if (!err && flavors) {
                     let response = JSON.parse(flavors);
-                    res(store ? {[StoreUtils.getProperStoreName(store)]: response} : response);
+                    res(store ? {[store]: response} : response);
                 } else {
                     rej(err || `No flavors were found${store ? ' for' + store : ''} on ${date}.`);
                 }

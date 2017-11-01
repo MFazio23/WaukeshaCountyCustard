@@ -18,7 +18,7 @@ module.exports = {
         let response = `${getDateName(date)}, `;
         const flavorKeys = Object.keys(flavors);
         flavorKeys.forEach((store, ind) => {
-            response += `${StoreUtils.getProperStoreName(store)} ${moment(date).isBefore(moment(), 'day') ? ' had ' : ' has '} `;
+            response += `${StoreUtils.getProperStoreName(store)} ${moment(date).isBefore(moment(), 'day') ? 'had' : 'has'} `;
             response += flavors[store].map((flavor) => flavor.flavorName).join(" and ");
 
             if(flavorKeys.length > 1 && flavorKeys.length - 2 >= ind) {
