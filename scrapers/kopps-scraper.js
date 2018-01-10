@@ -18,7 +18,7 @@ class KoppsScraper extends BaseScraper {
                     const $flavor = $(flavor);
                     return {
                         imgUrl: $flavor.find('.flavor-circle img').prop('src'),
-                        flavorName: $flavor.find('h3').text(),
+                        flavorName: $flavor.find('.flavor-of-day').text(),
                         flavorDescr: $flavor.find('p').text()
                     };
                 }).get()

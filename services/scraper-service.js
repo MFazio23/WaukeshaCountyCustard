@@ -39,13 +39,13 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/kopps', (req, res, next) => {
+router.post('/kopps', (req, res, next) => {
     koppsScraper.scrape().then((results) => res.json(results));
 });
-router.get('/oscars', (req, res, next) => {
+router.post('/oscars', (req, res, next) => {
     oscarsScraper.scrape().then((results) => res.json(results));
 });
-router.get('/murfs', (req, res, next) => {
+router.post('/murfs', (req, res, next) => {
     murfsScraper.scrape().then((results) => res.json(results));
 });
 

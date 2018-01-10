@@ -16,12 +16,12 @@
   "author": "Michael Fazio <mfazio23@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "actions-on-google": "^1.5.1",
+    "actions-on-google": "^1.7.0",
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
-    "express": "^4.15.4",
-    "firebase-admin": "^5.4.2",
-    "moment": "^2.18.1",
-    "request": "^2.81.0"
+    "express": "^4.16.2",
+    "firebase-admin": "^5.7.0",
+    "moment": "^2.20.1",
+    "request": "^2.83.0"
   }
 }
