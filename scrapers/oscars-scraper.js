@@ -1,6 +1,8 @@
 const StringUtils = require('../utils/string-utils');
 const BaseScraper = require('./base-scraper');
-const moment = require('moment');
+const moment = require('moment-timezone');
+
+moment.tz.setDefault("America/Chicago");
 
 class OscarsScraper extends BaseScraper {
     constructor() {

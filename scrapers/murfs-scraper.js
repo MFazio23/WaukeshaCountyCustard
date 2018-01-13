@@ -1,5 +1,7 @@
 const BaseScraper = require('./base-scraper');
-const moment = require('moment');
+const moment = require('moment-timezone');
+
+moment.tz.setDefault("America/Chicago");
 
 class MurfsScraper extends BaseScraper {
     constructor() {

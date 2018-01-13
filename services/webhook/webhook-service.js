@@ -1,8 +1,10 @@
 const flavorUtils = require('../../utils/flavor-utils');
 const responseUtils = require('../../utils/response-utils');
 const storeUtils = require('../../utils/store-utils');
-const moment = require('moment');
+const moment = require('moment-timezone');
 const DialogflowApp = require('actions-on-google').DialogflowApp;
+
+moment.tz.setDefault("America/Chicago");
 
 let db, app;
 

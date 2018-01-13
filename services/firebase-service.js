@@ -1,10 +1,12 @@
 const
     StoreUtils = require("../utils/store-utils"),
     Utils = require("../utils/general-utils"),
-    moment = require('moment'),
+    moment = require('moment-timezone'),
     request = require('request'),
     fbAdmin = require('firebase-admin'),
     serviceAccount = require('../service-account-key.json');
+
+moment.tz.setDefault("America/Chicago");
 
 class FirebaseService {
     constructor() {
