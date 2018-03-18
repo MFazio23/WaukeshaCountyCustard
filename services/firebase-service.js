@@ -1,5 +1,4 @@
 const
-    StoreUtils = require("../utils/store-utils"),
     Utils = require("../utils/general-utils"),
     moment = require('moment-timezone'),
     request = require('request'),

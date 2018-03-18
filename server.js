@@ -1,7 +1,7 @@
 const express = require("express"),
       bodyParser = require("body-parser"),
       LocalDBService = require('./services/firebase-service'),
-      scraperService = require('./services/scraper-service'),
+      scraperService = require('./scraper/scraper-service'),
       apiService = require('./services/api-service'),
       webhookService = require('./services/webhook/webhook-service'),
       app = express();

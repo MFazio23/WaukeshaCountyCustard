@@ -1,4 +1,4 @@
-const StringUtils = require('../utils/string-utils');
+const StringUtils = require('../../utils/string-utils');
 const BaseScraper = require('./base-scraper');
 const moment = require('moment-timezone');
 

@@ -1,6 +1,6 @@
-const KoppsScraper = require('../scrapers/kopps-scraper'),
-    OscarsScraper = require('../scrapers/oscars-scraper'),
-    MurfsScraper = require('../scrapers/murfs-scraper');
+const KoppsScraper = require('./scrapers/kopps-scraper'),
+    OscarsScraper = require('./scrapers/oscars-scraper'),
+    MurfsScraper = require('./scrapers/murfs-scraper');
 
 const router = require('express').Router(),
     koppsScraper = new KoppsScraper(),
