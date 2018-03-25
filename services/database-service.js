@@ -7,7 +7,7 @@ const
 
 moment.tz.setDefault("America/Chicago");
 
-class FirebaseService {
+class DatabaseService {
     constructor() {
         this.dbUrl = "https://waukeshacountycustard.firebaseio.com";
         this.dateFormat = "YYYYMMDD";
@@ -97,6 +97,13 @@ class FirebaseService {
             });
         });
     }
+
+    addMisunderstoodInput(input) {
+        return new Promise((res, rej) => {
+            const miDb = this.db.ref(`misunderstoodInput/${moment().format("YYYYMMDDHHmmss")}`);
+            miDb.set({input: input}).then((result) => res(response));
+        });
+    }
 }
 
-module.exports = FirebaseService;
+module.exports = DatabaseService;

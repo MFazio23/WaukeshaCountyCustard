@@ -1,7 +1,7 @@
 const moment = require('moment-timezone'),
       StoreUtils = require("../utils/store-utils");
 
-getDateName = (date) => {
+const getDateName = (date) => {
     if(!date) return "Today";
     return moment(date).calendar(null, {
         sameDay: '[Today]',
@@ -14,7 +14,7 @@ getDateName = (date) => {
 };
 
 module.exports = {
-    convertFlavorsToDialogflowResponse: (flavors, date) => {
+    convertFlavorsToAssistantResponse: (flavors, date) => {
         let response = `${getDateName(date)}, `;
         const flavorKeys = Object.keys(flavors);
         flavorKeys.forEach((store, ind) => {

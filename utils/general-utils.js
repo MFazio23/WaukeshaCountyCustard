@@ -8,11 +8,13 @@ function mergeDeep(target, ...sources) {
 
     if (isObject(target) && isObject(source)) {
         for (const key in source) {
-            if (isObject(source[key])) {
-                if (!target[key]) Object.assign(target, {[key]: {}});
-                mergeDeep(target[key], source[key]);
-            } else {
-                Object.assign(target, {[key]: source[key]});
+            if(source.hasOwnProperty(key)) {
+                if (isObject(source[key])) {
+                    if (!target[key]) Object.assign(target, {[key]: {}});
+                    mergeDeep(target[key], source[key]);
+                } else {
+                    Object.assign(target, {[key]: source[key]});
+                }
             }
         }
     }
@@ -21,7 +23,7 @@ function mergeDeep(target, ...sources) {
 }
 
 module.exports = {
-    getRandomItemFromArray: (array) => array[parseInt(Math.random() * array.length)],
+    getRandomItemFromArray: (array) => array[Math.floor(Math.random() * array.length)],
     objectsAreEquivalent: (a, b) => {
         // Create arrays of property names
         let aProps = Object.getOwnPropertyNames(a);

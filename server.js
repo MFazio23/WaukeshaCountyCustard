@@ -1,9 +1,10 @@
 const express = require("express"),
       bodyParser = require("body-parser"),
-      LocalDBService = require('./services/firebase-service'),
+      LocalDBService = require('./services/database-service'),
       scraperService = require('./scraper/scraper-service'),
       apiService = require('./services/api-service'),
-      webhookService = require('./services/webhook/webhook-service'),
+      alexaHandler = require('./handlers/alexa-handler'),
+      dialogflowHandler = require('./handlers/dialogflow-handler'),
       app = express();
 
 const port = process.env.PORT || 2323,
@@ -14,7 +15,9 @@ app.use(bodyParser.json());
 app.use('/scrape', scraperService(db));
 app.use('/api', apiService(db));
 
-app.post('/dialogflow/webhook', webhookService(db));
+//app.post('/webhook/alexa', alexaHandler(db));
+app.post('/webhook/dialogflow', dialogflowHandler(db));
+app.post('/dialogflow/webhook', dialogflowHandler(db));
 
 app.get('/', (req, res) => res.send("Welcome to the Waukesha County Custard API!  Don't use it!"));
 

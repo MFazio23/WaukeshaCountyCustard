@@ -2,16 +2,14 @@
 const storeNames = {
     "kopps": "Kopp's",
     "oscars": "Oscar's",
-    "murfs": "Murf's",
-    "bubbas": "Bubba's",
-    "culvers": "Culver's"
+    "murfs": "Murf's"
 };
 
-getProperStoreName = (storeName) => storeNames[storeName];
+const getProperStoreName = (storeName) => storeNames[storeName];
 
 module.exports = {
     getProperStoreName: getProperStoreName,
-    convertStoresToDialogflowResponse: (stores, storeName, city) => {
+    convertStoresToAssistantResponse: (stores, storeName, city) => {
         let response = `I found ${stores.locationCount} ${storeName ? getProperStoreName(storeName) : (stores.locationCount === 1 ? 'store' : 'stores')}${city ? ` in ${city}` : ''}: `;
 
         let storeResponses = [];
@@ -33,7 +31,7 @@ module.exports = {
 
         return `${response}.`;
     },
-    convertStoreHoursToDialogflowResponse: (stores, storeName, city) => {
+    convertStoreHoursToAssistantResponse: (stores, storeName, city) => {
         let response = '';
         if(stores.locationCount === 1) {
             const currentStoreName = Object.keys(stores)[0];
