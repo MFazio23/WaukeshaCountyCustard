@@ -11,7 +11,7 @@ const express = require("express"),
 const port = process.env.PORT || 2323,
       db = new LocalDBService();
 
-app.use(verifier);
+//app.use(verifier);
 app.use(bodyParser.json());
 
 app.use('/scrape', scraperService(db));
