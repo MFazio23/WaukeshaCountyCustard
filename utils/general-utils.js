@@ -49,5 +49,19 @@ module.exports = {
         // are considered equivalent
         return true;
     },
-    mergeDeep: mergeDeep
+    mergeDeep: mergeDeep,
+    getAlexaSlotId: (slot) => {
+        let id = slot.value;
+
+        if(slot.resolutions &&
+            slot.resolutions.resolutionsPerAuthority &&
+            slot.resolutions.resolutionsPerAuthority[0] &&
+            slot.resolutions.resolutionsPerAuthority[0].values &&
+            slot.resolutions.resolutionsPerAuthority[0].values[0] &&
+            slot.resolutions.resolutionsPerAuthority[0].values[0].value) {
+            id = slot.resolutions.resolutionsPerAuthority[0].values[0].value.id || slot.value;
+        }
+
+        return id;
+    }
 };

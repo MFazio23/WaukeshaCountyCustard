@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "actions-on-google": "^1.7.0",
+    "alexa-sdk": "^1.0.25",
+    "alexa-verifier-middleware": "^1.0.1",
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
