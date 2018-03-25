@@ -11,14 +11,16 @@ const express = require("express"),
 const port = process.env.PORT || 2323,
       db = new LocalDBService();
 
-//app.use(verifier);
+const alexaRouter = express.Router();
+app.use('/webhook/alexa', alexaRouter);
+
+alexaRouter.use(verifier);
+
 app.use(bodyParser.json());
 
 app.use('/scrape', scraperService(db));
 app.use('/api', apiService(db));
 
-const alexaRouter = express.Router();
-app.use('/webhook/alexa', alexaRouter);
 alexaRouter.post('/', alexaHandler(db));
 
 app.post('/webhook/dialogflow', dialogflowHandler(db));
