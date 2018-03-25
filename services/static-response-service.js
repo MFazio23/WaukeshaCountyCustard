@@ -12,7 +12,7 @@ module.exports = {
             "The Waukesha County Custard assistant will let you know of the Flavors of the Day at various custard shops all over Waukesha County, including Brookfield, Waukesha, and other local towns.  How can I help you?",
             "The Waukesha County Custard assistant will let you know of the Flavors of the Day at various custard shops all over Waukesha County, including Brookfield, Waukesha, and other local towns.  You can also get info about each of the stores, including locations and hours.  Need help?  Just ask \"Waukesha County Custard, what can you tell me?\"",
             "You can also get info about various frozen custard shops around Waukesha County, including their flavors of the day, locations, and hours. What would you like to know?",
-            "Currently, you can get information from Kopp's, Oscar's, and Murf's Frozen Custard.  Please note that none of these shops are sponsors of this app, and the app does not own any rights to any of these shops."
+            "Currently, you can get information from Kopp's, Oscar's, and Murf's Frozen Custard.  Please note that none of these shops are sponsors of this app, and the app does not own any rights to any of these shops.  What can I do for you?"
         ]);
     },
     getHelpResponse: () => {
