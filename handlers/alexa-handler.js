@@ -30,6 +30,9 @@ const handlers = {
     'AMAZON.CancelIntent': function() {
         this.emit(':tell', staticResponse.getGoodbyeResponse());
     },
+    'AMAZON.StopIntent': function() {
+        this.emit(':tell', staticResponse.getGoodbyeResponse());
+    },
     'Flavors': function() {
         const intent = this.event.request.intent;
         const date = intent.slots.date.value;
