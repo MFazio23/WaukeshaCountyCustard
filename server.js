@@ -11,6 +11,8 @@ const express = require("express"),
 const port = process.env.PORT || 2323,
       db = new LocalDBService();
 
+app.use('/.well-known', express.static('.well-known'));
+
 const alexaRouter = express.Router();
 app.use('/webhook/alexa', alexaRouter);
 
