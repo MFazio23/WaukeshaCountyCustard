@@ -7,12 +7,27 @@ moment.tz.setDefault("America/Chicago");
 class OscarsScraper extends BaseScraper {
     constructor() {
         super();
-        this.url = "http://oscarscustard.com/flavors.html";
+        this.url = "http://www.oscarscustard.com/index.php/flavors/";
         this.storeName = "oscars";
     }
 
     parseContent($) {
-        const todayNameBlock = $("p span.style3").first();
+        const flavorList = $("tbody.wpsm-tbody tr");
+        const month = $("div.et_pb_text_inner h2:not(:has(span))").text().replace(" FLAVORS", "");
+
+        return flavorList.map((ind, flavorRow) => {
+            const flavorCells = $(flavorRow).find('td');
+
+            const dayOfMonth = flavorCells.first().text().trim().replace(/\D+/gi, ""),
+                  flavorNames = flavorCells.last().text().trim();
+
+            return {
+                date: moment(`${month} ${dayOfMonth}`, "MMMM D").format("YYYYMMDD"),
+                flavors: flavorNames.split(" -or- ")
+            }
+        }).get();
+
+        /*const todayNameBlock = $("p span.style3").first();
         const todaysName = todayNameBlock.text().trim();
         const today = todayNameBlock.parent('p').text().trim().replace(/\n[ ]+/gi, ' ');
         const todaysDescription = today.replace(todaysName, '').trim();
@@ -39,7 +54,7 @@ class OscarsScraper extends BaseScraper {
             };
         });
 
-        return mp.get();
+        return mp.get();*/
     }
 }
 

@@ -16,15 +16,15 @@
   "author": "Michael Fazio <mfazio23@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "actions-on-google": "^1.7.0",
+    "actions-on-google": "^2.5.0",
     "alexa-sdk": "^1.0.25",
     "alexa-verifier-middleware": "^1.0.1",
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.2",
-    "firebase-admin": "^5.7.0",
-    "moment": "^2.20.1",
-    "moment-timezone": "^0.5.14",
-    "request": "^2.83.0"
+    "express": "^4.16.4",
+    "firebase-admin": "^6.3.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.23",
+    "request": "^2.88.0"
   }
 }
