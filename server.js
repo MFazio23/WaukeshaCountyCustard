@@ -18,7 +18,7 @@ app.use('/webhook/alexa', alexaRouter);
 
 alexaRouter.use(verifier);
 alexaRouter.use(bodyParser.json());
-alexaRouter.post('/', alexaHandler);
+alexaRouter.post('/', alexaHandler(db));
 
 app.use(bodyParser.json());
 app.use('/scrape', scraperService(db));
