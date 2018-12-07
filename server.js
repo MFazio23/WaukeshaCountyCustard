@@ -17,16 +17,14 @@ const alexaRouter = express.Router();
 app.use('/webhook/alexa', alexaRouter);
 
 alexaRouter.use(verifier);
+alexaRouter.use(bodyParser.json());
+alexaRouter.post('/', alexaHandler);
 
 app.use(bodyParser.json());
-
 app.use('/scrape', scraperService(db));
 app.use('/api', apiService(db));
 
-alexaRouter.post('/', alexaHandler(db));
-
-app.post('/webhook/dialogflow', dialogflowHandler(db));
-app.post('/dialogflow/webhook', dialogflowHandler(db));
+app.use('/webhook/dialogflow', bodyParser.json(), dialogflowHandler(db));
 
 app.get('/', (req, res) => res.send("Welcome to the Waukesha County Custard API!  Don't use it!"));
 

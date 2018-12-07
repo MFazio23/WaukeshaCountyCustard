@@ -23,7 +23,9 @@ class OscarsScraper extends BaseScraper {
 
             return {
                 date: moment(`${month} ${dayOfMonth}`, "MMMM D").format("YYYYMMDD"),
-                flavors: flavorNames.split(" -or- ")
+                flavors: flavorNames.split(" -or- ").map((name, nameInd) => {
+                    return { flavorName: name }
+                })
             }
         }).get();
 

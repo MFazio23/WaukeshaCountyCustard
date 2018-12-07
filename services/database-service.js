@@ -101,7 +101,7 @@ class DatabaseService {
     addMisunderstoodInput(input) {
         return new Promise((res, rej) => {
             const miDb = this.db.ref(`misunderstoodInput/${moment().format("YYYYMMDDHHmmss")}`);
-            miDb.set({input: input}).then((result) => res(response));
+            miDb.set({input: input}).then((result) => res(result));
         });
     }
 }
