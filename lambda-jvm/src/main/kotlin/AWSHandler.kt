@@ -17,7 +17,6 @@ class AWSHandler : RequestStreamHandler {
     override fun handleRequest(input: InputStream?, output: OutputStream?, context: Context?) {
         // If one of these values doesn't come in, we're probably hosed anyway.
         // We could use a better response, though.
-
         if (input == null || output == null || context == null) return
 
         val logger = context.logger
