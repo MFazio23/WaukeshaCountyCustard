@@ -16,9 +16,6 @@
   "author": "Michael Fazio <mfazio23@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "actions-on-google": "^2.13.0",
-    "alexa-sdk": "^1.0.25",
-    "alexa-verifier-middleware": "^1.0.3",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.5",
     "express": "^4.17.1",

@@ -27,7 +27,6 @@ class BaseScraper {
     }
 
     findAndGetText(baseElement, query) {
-        //$block.find('.weeklyDateDay').text().trim()
         let text = baseElement.find(query).text();
         if(text) text = text.trim();
         return text;

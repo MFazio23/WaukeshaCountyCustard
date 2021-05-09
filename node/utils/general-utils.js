@@ -23,45 +23,5 @@ function mergeDeep(target, ...sources) {
 }
 
 module.exports = {
-    getRandomItemFromArray: (array) => array[Math.floor(Math.random() * array.length)],
-    objectsAreEquivalent: (a, b) => {
-        // Create arrays of property names
-        let aProps = Object.getOwnPropertyNames(a);
-        let bProps = Object.getOwnPropertyNames(b);
-
-        // If number of properties is different,
-        // objects are not equivalent
-        if (aProps.length !== bProps.length) {
-            return false;
-        }
-
-        for (let i = 0; i < aProps.length; i++) {
-            let propName = aProps[i];
-
-            // If values of same property are not equal,
-            // objects are not equivalent
-            if (a[propName] !== b[propName]) {
-                return false;
-            }
-        }
-
-        // If we made it this far, objects
-        // are considered equivalent
-        return true;
-    },
-    mergeDeep: mergeDeep,
-    getAlexaSlotId: (slot) => {
-        let id = slot.value;
-
-        if(slot.resolutions &&
-            slot.resolutions.resolutionsPerAuthority &&
-            slot.resolutions.resolutionsPerAuthority[0] &&
-            slot.resolutions.resolutionsPerAuthority[0].values &&
-            slot.resolutions.resolutionsPerAuthority[0].values[0] &&
-            slot.resolutions.resolutionsPerAuthority[0].values[0].value) {
-            id = slot.resolutions.resolutionsPerAuthority[0].values[0].value.id || slot.value;
-        }
-
-        return id;
-    }
+    mergeDeep: mergeDeep
 };
