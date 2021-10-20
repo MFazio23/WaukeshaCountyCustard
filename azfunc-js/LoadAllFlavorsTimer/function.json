@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "name": "loadAllFlavorsTimer",
+      "type": "timerTrigger",
+      "authLevel": "anonymous",
+      "direction": "in",
+      "schedule": "0 0 3 * * *"
+    }
+  ]
+}
