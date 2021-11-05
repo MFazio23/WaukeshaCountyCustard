@@ -1,16 +1,23 @@
 const KoppsScraper = require("../scrapers/kopps-scraper"),
     OscarsScraper = require("../scrapers/oscars-scraper"),
     MurfsScraper = require("../scrapers/murfs-scraper"),
+    LeDucsScraper = require("../scrapers/leducs-scraper"),
     LocalDBService = require("../services/database-service");
 
 const koppsScraper = new KoppsScraper(),
     oscarsScraper = new OscarsScraper(),
-    murfsScraper = new MurfsScraper();
+    murfsScraper = new MurfsScraper(),
+    leDucsScraper = new LeDucsScraper();
 
 module.exports = async function () {
     const db = new LocalDBService();
 
-    const stores = await Promise.all([koppsScraper.scrape(), oscarsScraper.scrape(), murfsScraper.scrape()]);
+    const stores = await Promise.all([
+        koppsScraper.scrape(),
+        oscarsScraper.scrape(),
+        murfsScraper.scrape(),
+        leDucsScraper.scrape()
+    ]);
 
     let flavorCount = 0;
 

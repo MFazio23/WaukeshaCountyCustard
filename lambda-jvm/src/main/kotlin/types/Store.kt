@@ -13,7 +13,8 @@ data class Store(
         private val storeNameMapping = mapOf(
             "kopps" to "Kopp's",
             "oscars" to "Oscar's",
-            "murfs" to "Murf's"
+            "murfs" to "Murf's",
+            "leducs" to "LeDuc's"
         )
         fun convertStoreIdToName(id: String) = storeNameMapping[id]
     }
